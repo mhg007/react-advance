@@ -1,23 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import { AppContext } from './context';
+import { AddUser } from './components/AddUser';
+import { useState } from 'react';
+import { UserList } from './components/UserList';
 
 function App() {
+  const [users,setUsers] = useState([]);
+  const dispatchUserEvent = (actionType,payload)=>{
+    switch(actionType){
+      case 'ADD_USER':
+        setUsers([...users,payload.newUser]);
+        break;
+      case 'REMOVE_USER':
+        setUsers(users.filter(user => user.id !== payload.userId));
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AppContext.Provider value={{users,dispatchUserEvent}}>
+        <AddUser/>
+        <UserList/>
+      </AppContext.Provider>
     </div>
   );
 }
