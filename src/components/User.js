@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../context'
+import {Card,Button} from 'antd';
 
 export const User = ({user}) => {
     const {dispatchUserEvent} = useContext(AppContext);
@@ -9,13 +10,14 @@ export const User = ({user}) => {
 
   return (
     <div className='User'>
-        <h3>{user.name}</h3>
-        <h4>{user.age}</h4>
-        <div>
-            <small>{user.bio}</small>
-        </div>
-
-        <button onClick={handleRemoveUser}>Delete User</button>
+        <Card>
+            <h3>{user.name}</h3>
+            <h4>{user.age}</h4>
+            <p>
+                {user.bio}
+            </p>
+            <Button type='primary' onClick={handleRemoveUser} danger>Delete User</Button>
+        </Card>
     </div>
   )
 }

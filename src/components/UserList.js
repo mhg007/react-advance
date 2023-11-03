@@ -6,7 +6,7 @@ export const UserList = () => {
     const {users} = useContext(AppContext);
   return (
     <div>
-        <h1>Available Users</h1>
+        <h2>Available Users</h2>
         {users.map(user=><User key={user.id} user={user}/>)}
     </div>
   )

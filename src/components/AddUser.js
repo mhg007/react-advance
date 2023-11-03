@@ -1,6 +1,8 @@
+import '../App.css'
 import React, { useContext, useState } from 'react'
 import { AppContext } from '../context'
-
+import {Card,Input,Button} from 'antd';
+const { TextArea } = Input;
 export const AddUser = () => {
     const {dispatchUserEvent} = useContext(AppContext);
     const [name,setName] = useState('');
@@ -11,15 +13,20 @@ export const AddUser = () => {
         dispatchUserEvent('ADD_USER',{newUser:user});
     }
   return (
-    <div>
-        <h3>Add New User</h3>
-        <input type='text' value={name} onChange={e => setName(e.target.value)} placeholder='Name'/>
-        <br/>
-        <input type='text' value={age} onChange={e=>setAge(e.target.value)} placeholder='Age'/>
-        <br/>
-        <textarea type='text' value={bio} onChange={e=>setBio(e.target.value)} placeholder='Bio'/>
-        <br/>
-        <button onClick={handleAddUser}>Add User</button>
+    <div className='User'>
+        <h2>Add New User</h2>
+        <Card className=''>
+            <Input type='text' value={name} onChange={e => setName(e.target.value)} placeholder='Name'/>
+            <br/>
+            <br/>
+            <Input type='text' value={age} onChange={e=>setAge(e.target.value)} placeholder='Age'/>
+            <br/>
+            <br/>
+            <TextArea row={4} maxLength={100} type='text' value={bio} onChange={e=>setBio(e.target.value)} placeholder='Bio'/>
+            <br/>
+            <br/>
+            <Button type='primary' onClick={handleAddUser} primary>Add User</Button>
+        </Card>
     </div>
   )
 }
