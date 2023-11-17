@@ -3,7 +3,9 @@ import { AppContext } from './context';
 import { AddUser } from './components/AddUser';
 import { useState } from 'react';
 import { UserList } from './components/UserList';
-
+import {DatePicker, Form} from 'antd';
+import moment from 'moment';
+import dayjs from 'dayjs';
 function App() {
   const [users,setUsers] = useState([]);
   const dispatchUserEvent = (actionType,payload)=>{
@@ -21,10 +23,18 @@ function App() {
 
   return (
     <div className="App">
-      <AppContext.Provider value={{users,dispatchUserEvent}}>
+      {/* <AppContext.Provider value={{users,dispatchUserEvent}}>
         <AddUser/>
         <UserList/>
-      </AppContext.Provider>
+      </AppContext.Provider> */}
+      <Form initialValues={{start: dayjs().startOf('month'), end:moment().endOf('month')}}>
+        <Form.Item name='start' label='Start Date'>
+          <DatePicker format={"YYYY-MM-DD"} placeholder='Start Date'/>
+        </Form.Item>
+        <Form.Item name='end' label='End Date'>
+          <DatePicker format={"YYYY-MM-DD"} placeholder='End Date'/>
+        </Form.Item>
+      </Form>
     </div>
   );
 }
