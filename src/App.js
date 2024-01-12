@@ -11,6 +11,8 @@ import FileUpload from './components/UploadFile';
 import { ShapeEditor } from './ReactDev/Array';
 import { CounterList } from './ReactDev/CounterList';
 import {Bucketlist, List, ReverseList} from './ReactDev/List'
+import Accordion from './manage_states/Accordion';
+import Messenger from './manage_states/Messenger';
 function App() {
   const [users,setUsers] = useState([]);
   const dispatchUserEvent = (actionType,payload)=>{
@@ -49,7 +51,9 @@ function App() {
       {/* <CounterList/> */}
       {/* <List/> */}
       {/* <ReverseList/> */}
-      <Bucketlist/>
+      {/* <Bucketlist/> */}
+      {/* <Accordion/> */}
+      <Messenger/>
     </div>
   );
 }
