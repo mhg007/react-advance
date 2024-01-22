@@ -13,6 +13,7 @@ import { CounterList } from './ReactDev/CounterList';
 import {Bucketlist, List, ReverseList} from './ReactDev/List'
 import Accordion from './manage_states/Accordion';
 import Messenger from './manage_states/Messenger';
+import MuiAutoComplete from './MuiComponents/MuiAutoComplete';
 function App() {
   const [users,setUsers] = useState([]);
   const dispatchUserEvent = (actionType,payload)=>{
@@ -53,7 +54,8 @@ function App() {
       {/* <ReverseList/> */}
       {/* <Bucketlist/> */}
       {/* <Accordion/> */}
-      <Messenger/>
+      {/* <Messenger/> */}
+      <MuiAutoComplete/>
     </div>
   );
 }
